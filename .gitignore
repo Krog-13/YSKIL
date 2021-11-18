@@ -1,0 +1,7 @@
+.idea
+test.py
+__pycache__
+venv
+app.db
+portfolio.log
+lib
