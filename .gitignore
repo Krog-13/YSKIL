@@ -5,3 +5,4 @@ venv
 app.db
 portfolio.log
 lib
+migrations

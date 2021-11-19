@@ -10,6 +10,8 @@ class UploadForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[DataRequired()])
+    subject = TextAreaField('Enter you subject:', validators=[DataRequired()])
+    body = TextAreaField('describe', validators=[DataRequired()])
+    cirtify = FileField('PDF file')
     submit = SubmitField('Submit')
 
