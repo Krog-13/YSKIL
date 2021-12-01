@@ -6,3 +6,4 @@ app.db
 portfolio.log
 lib
 migrations
+app/templates/static

@@ -3,8 +3,7 @@
             <td>
                 {% set user_link %}
                     <a href="{{ url_for('user', username=post.author.username) }}">
-                        {{ post.author.username }}
-                    </a>
+                        {{ post.author.username }}</a>
                 {% endset %}
                 <p>{{ user_link }}</p>
                 <br>

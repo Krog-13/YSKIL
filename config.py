@@ -7,6 +7,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    DOSSIER_PER_PAGE = 10
+    DOSSIER_PER_PAGE = 4
     UPLOAD_FOLDER = os.path.join(basedir, 'app/templates/static')
-    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'jpeg'}
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'jpeg', 'jpg'}
