@@ -1,5 +1,5 @@
 from app import app, db
-from flask import request, redirect, url_for, flash, render_template
+from flask import request, redirect, url_for, flash, render_template, send_from_directory
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
 from app.forms import UploadForm, PostForm, LoginForm, RegisterForm
@@ -52,9 +52,6 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', title='Register', form=form)
 
-
-
-
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -67,19 +64,27 @@ def user(username):
 @login_required
 def edit_profile():
     form = PostForm()
+    filename = None
     if form.validate_on_submit():
         f = form.doc.data
-        post = Achievements(subject=form.subject.data,
-                            body=form.body.data,
-                            author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your skill has been added')
         if f:
             filename = secure_filename(f.filename)
             f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        post = Achievements(subject=form.subject.data,
+                            body=form.body.data,
+                            author=current_user,
+                            certificate=filename)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your skill has been added')
+
         return redirect(url_for('index'))
     return render_template('edit_profile.html', form=form)
+
+@app.route('/uploads/<name>')
+def download_file(name):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], name)
+
 
 
 @app.route('/logout')
