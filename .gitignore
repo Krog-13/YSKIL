@@ -5,5 +5,5 @@ venv
 app.db
 portfolio.log
 lib
-src/migrations
-src/app/templates/statict
+migrations
+src/app/templates/static
