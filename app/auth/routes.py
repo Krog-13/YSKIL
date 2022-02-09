@@ -21,7 +21,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me)
-        return redirect(url_for('mian.index'))
+        return redirect(url_for('main.index'))
     return render_template('auth/login.html', title='Sing in', form=form)
 
 @bp.route('/register', methods=['GET', 'POST'])
