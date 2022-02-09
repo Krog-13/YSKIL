@@ -11,4 +11,4 @@ class Config:
     DOSSIER_PER_PAGE = 4
     UPLOAD_FOLDER = os.path.join(basedir, 'app/templates/static')
     ALLOWED_EXTENSIONS = {'txt', 'pdf', 'jpeg', 'jpg'}
-    LOG_TO_OUT = os.environ.get('LOG_TO_STOUT')
+    LOG_TO_OUT = os.environ.get('LOG_TO_STDOUT')
