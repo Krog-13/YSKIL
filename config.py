@@ -8,6 +8,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
         'postgres://', 'postgresql://') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@127.0.0.1/project'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DOSSIER_PER_PAGE = 4
     UPLOAD_FOLDER = os.path.join(basedir, 'app/templates/static')
