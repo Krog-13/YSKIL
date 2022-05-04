@@ -16,13 +16,14 @@
                 {% else %}
                 <span>authorization for adding skill</span>
                 {% endif %}
-
                 {% for post in posts %}
                     {%if post.certificate%}
                     <p>{{ post.certificate }}</p>
-                        <a href="{{ url_for('download_file', name=post.certificate) }}" target="_blank">download</a>
+                    <a href="{{ url_for('main.download_file', name=post.certificate) }}" target="_blank">download</a>
                     {%endif%}
                 {% endfor %}
+
+
 
             </td>
         </tr>
