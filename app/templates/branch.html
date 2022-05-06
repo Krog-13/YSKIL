@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='style.css') }}" >
+{% endblock%}
+
+{% block app_content %}
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td class="border">
+                            <div class="main">
+                                <ins class="ibg"></ins>
+                                <del></del>
+                                <a class="bobbly" href="#edit" rel="np" target=""></a>
+                            </div>
+                        </td>
+
+                        <td class="border">
+                            <div class="main">
+                                <ins class="yt">  </ins>
+                                <del></del>
+                                <a class="bobbly" href="#" rel="np" target=""></a>
+                            </div>
+                        </td>
+                        <td class="border">
+                            <div class="main">
+                                <ins class="tw">  </ins>
+                                <del></del>
+                                <a class="bobbly" href="#" rel="np" target=""></a>
+                            </div>
+                        </td>
+                        <td class="border">
+                            <div class="main">
+                                <ins class="fb">  </ins>
+                                <del></del>
+                                <a class="bobbly" href="#" rel="np" target=""></a>
+                            </div>
+                        </td>
+                        <td class="border">
+                            <div class="main">
+                                <ins class="ig">  </ins>
+                                <del></del>
+                                <a class="bobbly" href="#" rel="np" target=""></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <div id="edit">
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                {% if form %}
+                                {{ wtf.quick_form(form, horizontal_columns=('lg',1,10)) }}
+                                <br>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+{% endblock %}

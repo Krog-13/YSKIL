@@ -1,0 +1,134 @@
+
+.main  {
+width: 70px;
+height: 70px;
+}
+table td {
+width: 60px;
+height: 60px
+}
+
+
+.border {
+border-width: 5px
+}
+
+.main ins {
+border: thick double #23435F;
+width: 70px;
+height: 70px;
+left: 2px;
+top: 4px;
+display: block;
+position: static;
+z-index: 4;
+background-repeat: no-repeat}
+
+
+.main a {
+width: 70px;
+height: 70px;
+display: block;
+position: relative;
+bottom: 70px;
+z-index: 5;
+}
+
+.main a:hover {
+background: #fff200;
+opacity: 0.4
+}
+.main ins:active {
+background-position: -64px 0px
+}
+
+
+.ibg {
+background: url("icons/both.png");
+background-position: -64px 0px
+}
+
+.yt {
+background: url("icons/YT.png");
+background-position: 0px 0px
+}
+
+.tw {
+background: url("icons/TW.png");
+background-position: 0px 0px
+}
+
+.fb {
+background: url("icons/FB.png");
+background-position: 0px 0px
+}
+
+.ig {
+background: url("icons/IG.png");
+background-position: 0px 0px
+}
+
+
+#edit {
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
+
+#edit:target {display: block;}
+      .close {
+        display: inline-block;
+        border: 1px solid #0000cc;
+        color: #0000cc;
+        padding: 0 12px;
+        margin: 10px;
+        text-decoration: none;
+        background: #f2f2f2;
+        font-size: 14pt;
+        cursor:pointer;
+
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+  background: black;
+  color: white;
+  font-size: 12px;
+  border-radius: 1em;
+  padding: 0 0.5em;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  opacity: 0;
+  width: 150px;
+  transform:translateX(-50%);
+  bottom: 25px;
+  padding: 0.5em;
+  background-color: black;
+  border-radius: 0.25em;
+  color: white;
+  text-align: center;
+  transition:0.2s;
+}
+[data-tooltip]:after {
+  content: "";
+  position: relative;
+  opacity: 0;
+  bottom: 15px;
+  margin-left: -5px;
+  border: 5px solid black;
+  border-color: black transparent transparent transparent;
+  transition:0.2s;
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  opacity: 1;
+}

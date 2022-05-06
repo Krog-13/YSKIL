@@ -3,8 +3,8 @@ from app.main import bp
 from flask import request, redirect, url_for, flash, render_template, send_from_directory, current_app
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
-from app.main.forms import PostForm
-from app.models import Achievements, User
+from app.main.forms import PostForm, TalentForm
+from app.models import Achievements, User, Branches
 import os
 
 
@@ -54,6 +54,28 @@ def edit_profile():
 
         return redirect(url_for('main.index'))
     return render_template('edit_profile.html', form=form)
+
+
+@bp.route('/branch', methods=['GET', 'POST'])
+@login_required
+def branch():
+    form = TalentForm()
+    filename = None
+    if form.validate_on_submit():
+        f = form.doc.data
+        if f:
+            filename = secure_filename(f.filename)
+            f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+        post = Branches(certificate=filename,
+                        timestamp=form.datetime.data,
+                        level=form.level.data,
+                        author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your skill has been added')
+        return redirect(url_for('main.index'))
+    return render_template('branch.html', form=form)
+
 
 @bp.route('/uploads/<name>')
 def download_file(name):

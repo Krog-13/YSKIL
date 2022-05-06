@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     about_me = db.Column(db.String(400))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     achieves = db.relationship('Achievements', backref='author', lazy='dynamic')
+    branches = db.relationship('Branches', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return f'<- User {self.username} ->'
@@ -41,3 +42,14 @@ class Achievements(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<- Achieve {self.subject} ->'
+
+
+class Branches(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    certificate = db.Column(db.String(120))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    level = db.Column(db.String(80), default='Easy')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return f'<- Branches {self.level} ->'

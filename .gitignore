@@ -16,3 +16,5 @@ lib
 app/templates/static
 logs
 lib64
+migrations/*
+migrations

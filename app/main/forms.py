@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, \
-    TextAreaField, FileField
+    TextAreaField, FileField,RadioField, DateField
 from wtforms import validators
 from wtforms.validators import Email, EqualTo, ValidationError, DataRequired
 
@@ -15,3 +15,11 @@ class PostForm(FlaskForm):
     body = TextAreaField('describe', validators=[DataRequired()])
     doc = FileField('File')
     submit = SubmitField('Submit')
+
+
+class TalentForm(FlaskForm):
+    lvl = ['Easy', 'Medium', 'Hard']
+    doc = FileField('Certificate')
+    datetime = DateField('Datetime', format='%Y-%m-%d', validators=(validators.Optional(),))
+    level = RadioField('lvl', validators=[DataRequired()], choices=lvl)
+    submit = SubmitField('Accept')
