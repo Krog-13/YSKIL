@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}{{('Welcome to Microblog') }}{% endif %}
+    {% if title %}{{ title }} - Rating{% else %}{{('Welcome to Microblog') }}{% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -47,5 +47,19 @@
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+
+    {% block footer %}
+        <div class="footer">
+            <footer class="text-center text-lg-start text-white" style="background-color: #929fba">
+                <div style="padding: 10px">
+                  <!-- Copyright -->
+                  <div class="footer-copysright text-center text-white">© 2022 Copyright:
+                    <a href="https://www.instagram.com/arman_nu_95" target="_blank">Instagram</a>
+                  </div>
+                  <!-- Copyright -->
+                </div>
+            </footer>
+        </div>
+    {% endblock %}
 {% endblock %}
 

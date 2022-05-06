@@ -8,6 +8,13 @@ width: 60px;
 height: 60px
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/
+    height: 40px;
+}
 
 .border {
 border-width: 5px
