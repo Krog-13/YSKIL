@@ -32,6 +32,7 @@ class User(UserMixin, db.Model):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?s={}'.format(digest, size)
 
+
 class Achievements(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(120), unique=True)
