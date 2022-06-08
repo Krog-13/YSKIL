@@ -1,4 +1,3 @@
-from datetime import datetime
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -46,7 +45,6 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
 
-
     def __repr__(self):
         return f'<- User {self.username} ->'
 
@@ -82,7 +80,6 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
                 setattr(self, field, data[field])
         if new_user and 'password' in data:
             self.set_password(data['password'])
-
 
     def get_token(self, expires_in=3600):
         now = datetime.utcnow()

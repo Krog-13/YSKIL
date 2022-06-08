@@ -22,7 +22,4 @@ class RegisterForm(FlaskForm):
 
 
 class LoadForm(FlaskForm):
-    pass
-
-
     submit = SubmitField('Submit')

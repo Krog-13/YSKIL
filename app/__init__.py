@@ -17,6 +17,7 @@ login.login_view = 'auth.login'
 login.login_message = ('Please log in to access this page.')
 bootstrap = Bootstrap()
 
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
@@ -25,7 +26,6 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     login.init_app(app)
     bootstrap.init_app(app)
-
 
     from app.errors import bp as error_bp
     app.register_blueprint(error_bp)
@@ -70,10 +70,6 @@ def create_app(config_class=Config):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('Microblog startup')
-
-
     return app
-
-
 
 from app import models
