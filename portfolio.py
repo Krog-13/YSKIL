@@ -2,7 +2,7 @@ from app import create_app, db
 from app.models import User, Achievements
 
 app = create_app()
-
+from app.major import admin
 
 @app.shell_context_processor
 def make_shell_context():
