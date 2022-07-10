@@ -1,11 +1,11 @@
 from app import db
 from app.auth import bp
 from flask import request, redirect, url_for, flash, render_template, send_from_directory
-from flask_login import login_user, logout_user, current_user, login_required
+# from flask_login import logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
 from app.auth.forms import LoginForm, RegisterForm
 from app.models import Achievements, User
-
+from flask_security import login_user, current_user, logout_user, login_required
 
 
 
@@ -23,6 +23,7 @@ def login():
         login_user(user, remember=form.remember_me)
         return redirect(url_for('main.index'))
     return render_template('auth/login.html', title='Sing in', form=form)
+
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():

@@ -6,8 +6,22 @@ from flask import url_for
 import base64
 from datetime import datetime, timedelta
 import os
+from flask_security import Security, SQLAlchemyUserDatastore, \
+    UserMixin, RoleMixin, login_required
+
+# Define models
+roles_users = db.Table('roles_users',
+        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
 
 
+class Role(db.Model, RoleMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.String(255))
+
+    def __str__(self):
+        return self.name
 
 class PaginatedAPIMixin():
     @staticmethod
@@ -44,6 +58,8 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     branches = db.relationship('Branches', backref='author', lazy='dynamic')
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
+    roles = db.relationship('Role', secondary=roles_users,
+                            backref=db.backref('users', lazy='dynamic'))
 
     def __repr__(self):
         return f'<- User {self.username} ->'
@@ -100,10 +116,13 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
             return None
         return user
 
+    def active(self):
+        pass
 
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
 
 class Achievements(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
