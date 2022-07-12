@@ -21,7 +21,6 @@ class UsersView(ModelView):
     }
     column_exclude_list = ["password_hash", "token"]
 
-
     def is_accessible(self):
         return (current_user.is_authenticated and
                 current_user.has_role('superuser'))
@@ -46,8 +45,7 @@ def security_context_processor():
     return dict(
         admin_base_template=admin.base_template,
         admin_view=admin.index_view,
-        h=admin_helpers,
-    )
+        h=admin_helpers)
 
 
 def security(app):
