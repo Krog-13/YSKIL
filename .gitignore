@@ -13,7 +13,6 @@ venv
 app.db
 portfolio.log
 lib
-app/templates/static
 logs
 lib64
 migrations/*
