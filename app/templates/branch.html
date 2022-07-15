@@ -16,6 +16,10 @@
                                 <del></del>
                                 <a class="bobbly" href="#edit" rel="np" target=""></a>
                             </div>
+                            <br>
+                            {% for post in posts %}
+                                {% include '_talent.html' %}
+                            {% endfor %}
                         </td>
 
                         <td class="border">
@@ -49,13 +53,21 @@
                     </tr>
                 </tbody>
             </table>
-
+{% block flesh %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    {% endblock %}
                 <div id="edit">
                     <table class="table table-hover">
                         <tr>
                             <td>
                                 {% if form %}
-                                {{ wtf.quick_form(form, horizontal_columns=('lg',1,10)) }}
+                                {{ wtf.quick_form(form, horizontal_columns=('lg',3,10)) }}
                                 <br>
                                 {% endif %}
                             </td>

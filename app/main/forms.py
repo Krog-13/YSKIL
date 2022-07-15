@@ -13,13 +13,14 @@ class UploadForm(FlaskForm):
 class PostForm(FlaskForm):
     subject = TextAreaField('Enter you subject:', validators=[DataRequired()])
     body = TextAreaField('describe', validators=[DataRequired()])
-    doc = FileField('File')
+    summary = FileField('File')
     submit = SubmitField('Submit')
 
 
 class TalentForm(FlaskForm):
-    lvl = ['Easy', 'Medium', 'Hard']
+    # lvl = ['Easy', 'Medium', 'Hard']
     doc = FileField('Certificate')
-    datetime = DateField('Datetime', format='%Y-%m-%d', validators=(validators.Optional(),))
-    level = RadioField('lvl', validators=[DataRequired()], choices=lvl)
+    title = StringField('Name')
+    datetime = DateField('Date of receipt', format='%Y-%m-%d', validators=(validators.Optional(),))
+    organisation = StringField('Organization')
     submit = SubmitField('Accept')

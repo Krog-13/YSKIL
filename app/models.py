@@ -128,7 +128,7 @@ class Achievements(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(120), unique=True)
     body = db.Column(db.String(140))
-    certificate = db.Column(db.String(120))
+    summary = db.Column(db.String(120))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -139,8 +139,9 @@ class Achievements(UserMixin, db.Model):
 class Branches(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     certificate = db.Column(db.String(120))
+    title = db.Column(db.String(120))
+    organization = db.Column(db.String(80), default='Myself')
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
-    level = db.Column(db.String(80), default='Easy')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):

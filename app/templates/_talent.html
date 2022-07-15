@@ -1,0 +1,12 @@
+    <table class="table table-hover success">
+        <tr class="success">
+            <td class="warning">
+                <a class="text-capitalize" href="{{ url_for('main.download_file', name=post.certificate) }}"
+                   target="_blank">{{ post.title }}</a>
+                <br>
+                <span class="text-uppercase" id="post{{ post.id }}">{{ post.organization }}</span>
+                <br>
+                <em class="initialism">{{ post.timestamp.year }}</em>
+            </td>
+        </tr>
+    </table>

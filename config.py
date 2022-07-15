@@ -10,8 +10,8 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@127.0.0.1/project'
     DOSSIER_PER_PAGE = 4
-    UPLOAD_FOLDER = os.path.join(basedir, 'app/templates/static')
-    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'jpeg', 'jpg'}
+    UPLOAD_FOLDER = os.path.join(basedir, 'app/static/docs')
+    ALLOWED_EXTENSIONS = {'docx', 'pdf', 'jpeg'}
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 
     # Flask-Security config

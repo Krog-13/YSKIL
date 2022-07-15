@@ -40,14 +40,14 @@ def edit_profile():
     form = PostForm()
     filename = None
     if form.validate_on_submit():
-        f = form.doc.data
-        if f:
+        f = form.summary.data
+        if f and allowed_file(f.filename):
             filename = secure_filename(f.filename)
             f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
         post = Achievements(subject=form.subject.data,
                             body=form.body.data,
                             author=current_user,
-                            certificate=filename)
+                            summary=filename)
         db.session.add(post)
         db.session.commit()
         flash('Your skill has been added')
@@ -56,25 +56,29 @@ def edit_profile():
     return render_template('edit_profile.html', form=form)
 
 
-@bp.route('/branch', methods=['GET', 'POST'])
+@bp.route('/branch/<username>', methods=['GET', 'POST'])
 @login_required
-def branch():
+def branch(username):
     form = TalentForm()
     filename = None
+    user = User.query.filter_by(username=username).first_or_404()
+    certificates = user.branches.order_by(Branches.timestamp.desc())
     if form.validate_on_submit():
         f = form.doc.data
-        if f:
+        if f and allowed_file(f.filename):
             filename = secure_filename(f.filename)
             f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-        post = Branches(certificate=filename,
-                        timestamp=form.datetime.data,
-                        level=form.level.data,
-                        author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your skill has been added')
-        return redirect(url_for('main.index'))
-    return render_template('branch.html', form=form)
+            post = Branches(certificate=filename,
+                            title=form.title.data,
+                            timestamp=form.datetime.data,
+                            organization=form.organisation.data,
+                            author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your skill has been added')
+            return redirect(url_for('main.index'))
+        flash(f'Invalid extension - {f.filename}')
+    return render_template('branch.html', form=form, posts=certificates)
 
 
 @bp.route('/uploads/<name>')

@@ -4,22 +4,22 @@
 {% block app_content %}
     <table class="table table-hover">
         <tr>
-            <td width="256px"><img src="{{ user.avatar(84) }}"></td>
+            <td width="256px"><img src="{{ user.avatar(124) }}"></td>
             <td>
                 <h1>{{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}
-                <p>last seen {{ user.last_seen }}</p>
+                <em>last seen at - {{ user.last_seen.date() }}</em>
                 {% endif %}
                 {% if current_user.username == user.username %}
-                <p><a href="{{ url_for('main.edit_profile') }}">Add skill</a></p>
+                <p><a href="{{ url_for('main.edit_profile') }}">Upload CV</a></p>
                 {% else %}
                 <span>authorization for adding skill</span>
                 {% endif %}
                 {% for post in posts %}
-                    {%if post.certificate%}
-                    <p>{{ post.certificate }}</p>
-                    <a href="{{ url_for('main.download_file', name=post.certificate) }}" target="_blank">download</a>
+                    {%if post.summary%}
+                    <p>{{ post.summary.split('.')[0] }}</p>
+                    <a href="{{ url_for('main.download_file', name=post.summary) }}" target="_blank">View</a>
                     {%endif%}
                 {% endfor %}
             </td>

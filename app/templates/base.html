@@ -45,7 +45,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ url_for('main.index') }}">{{ ('Home') }}</a></li>
-                    <li><a href="{{ url_for('main.branch') }}">{{ ('Talent') }}</a></li>
+                    <li><a href="{{ url_for('main.branch', username=current_user.username) }}">
+                        {{ ('Talent') }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.has_role('superuser') %}

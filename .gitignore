@@ -18,3 +18,4 @@ lib64
 migrations/*
 migrations
 FAQ.md
+/app/static/docs/
