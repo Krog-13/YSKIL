@@ -67,22 +67,14 @@
 
 {% block content %}
     <div class="container">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-
         {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+        {% block app_content %} {% endblock %}
     </div>
 
     {% block footer %}
         <div class="footer">
             <footer class="text-center text-lg-start text-white" style="background-color: #1E3243">
-                <div style="padding: 10px">
+                <div style="padding-top: 5px">
                   <!-- Copyright -->
                   <div class="text-uppercase text-center text-white">© 2022 Copyright:
                     <a href="https://www.instagram.com/arman_nu_95" target="_blank">Instagram</a>

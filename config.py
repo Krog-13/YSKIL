@@ -15,14 +15,14 @@ class Config(object):
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 
     # Flask-Security config
-    SECURITY_URL_PREFIX = "/admin"
+    SECURITY_URL_PREFIX = "/auth"
     SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
     SECURITY_PASSWORD_SALT = "ATGUOHAELKiubahiughaerGOJAEGj"
 
     # Flask-Security URLs, overridden because they don't put a / at the end
-    SECURITY_LOGIN_URL = "/login/"
-    SECURITY_LOGOUT_URL = "/logout/"
-    SECURITY_REGISTER_URL = "/register/"
+    # SECURITY_LOGIN_URL = "/login"
+    # SECURITY_LOGOUT_URL = "/logout/"
+    # SECURITY_REGISTER_URL = "/register/"
 
     # Flask-Security features
     SECRET_REGISTERABLE = True

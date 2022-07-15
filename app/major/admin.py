@@ -40,7 +40,6 @@ class SkillView(ModelView):
         return redirect(url_for('auth.login', next=request.url))
 
 
-
 def security_context_processor():
     return dict(
         admin_base_template=admin.base_template,
