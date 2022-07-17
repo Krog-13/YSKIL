@@ -73,27 +73,37 @@ z-index: 4;
 background-position: right;
 background-repeat: no-repeat} 
 }
-.ibg {
+
+.code {
+background: url("icons/DB.png");
+filter: grayscale(100%);
+
+}
+
+.code-active {
+background: url("icons/DB.png");
+filter: grayscale(50%);
+
+}
+
+
+.self {
 background: url("icons/code.png");
 filter: grayscale(100%);
 background-position: center;
 }
 
-.ibg-active {
+.self-active {
 background: url("icons/code.png");
-filter: grayscale(%);
+filter: grayscale(0%);
 background-position: center;
-}
-
-.ibg.hovered {
-  border-color: #ffd100;
-  box-shadow: 0 1px 3px rgb(0, 0, 0, .12), 0 1px 2px rgb(0, 0, 0, .24);
 }
 
 
 .yt {
 background: url("icons/DB.png");
 filter: grayscale(100%);
+background-position: center;
 }
 
 .yt-active {
