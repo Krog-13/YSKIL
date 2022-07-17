@@ -12,42 +12,80 @@
                     <tr>
                         <td class="border">
                             <div class="main">
+                                {% if "Main" in type %}
+                                <ins class="ibg-active"></ins>
+                                {% else %}
                                 <ins class="ibg"></ins>
-                                <del></del>
+                                {% endif %}
+                                <del id="#1"></del>
                                 <a class="bobbly" href="#edit" rel="np" target=""></a>
                             </div>
                             <br>
                             {% for post in posts %}
-                                {% include '_talent.html' %}
+                                {% if not post.field %}
+                                    {% include '_talent.html' %}
+                                {% endif %}
                             {% endfor %}
                         </td>
 
                         <td class="border">
                             <div class="main">
-                                <ins class="yt">  </ins>
+                                {% if "Database" in type %}
+                                    <ins class="yt-active">  </ins>
+                                {% else %}
+                                    <ins class="yt">  </ins>
+                                {% endif %}
                                 <del></del>
-                                <a class="bobbly" href="#" rel="np" target=""></a>
+                                <a class="bobbly" href="#edit" rel="np" target=""></a>
+                            </div>
+                            <br>
+                            {% for post in posts %}
+                                {% if post.field == "Database" %}
+                                    {% include '_talent.html' %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="border">
+                            <div class="main">
+                                {% if "Linux" in type %}
+                                    <ins class="tw-active">  </ins>
+                                {% else %}
+                                    <ins class="tw">  </ins>
+                                {% endif %}
+                                <del></del>
+                                <a class="bobbly" href="#edit" rel="np" target=""></a>
+                            </div>
+                            <br>
+                            {% for post in posts %}
+                                {% if post.field == "Linux" %}
+                                    {% include '_talent.html' %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="border">
+                            <div class="main">
+                                {% if "Cloud" in type %}
+                                    <ins class="fb-active">  </ins>
+                                {% elif "Linux" in type %}
+                                    <ins class="fb">  </ins>
+                                {% else %}
+                                    <ins class="fb-passive">  </ins>
+                                {% endif %}
+                                <del></del>
+                                <a class="bobbly" href="#edit" rel="np" target=""></a>
                             </div>
                         </td>
                         <td class="border">
                             <div class="main">
-                                <ins class="tw">  </ins>
+                                {% if "Docker" in type %}
+                                    <ins class="ig-active">  </ins>
+                                {% elif "Linux" in type %}
+                                    <ins class="ig">  </ins>
+                                {% else %}
+                                    <ins class="ig-passive">  </ins>
+                                {% endif %}
                                 <del></del>
-                                <a class="bobbly" href="#" rel="np" target=""></a>
-                            </div>
-                        </td>
-                        <td class="border">
-                            <div class="main">
-                                <ins class="fb">  </ins>
-                                <del></del>
-                                <a class="bobbly" href="#" rel="np" target=""></a>
-                            </div>
-                        </td>
-                        <td class="border">
-                            <div class="main">
-                                <ins class="ig">  </ins>
-                                <del></del>
-                                <a class="bobbly" href="#" rel="np" target=""></a>
+                                <a class="bobbly" href="#edit" rel="np" target=""></a>
                             </div>
                         </td>
                     </tr>
@@ -66,6 +104,9 @@
                     <table class="table table-hover">
                         <tr>
                             <td>
+                                <div class="">
+                                    <a class="closeimg" href="#1" rel="np" target=""></a>
+                                </div>
                                 {% if form %}
                                 {{ wtf.quick_form(form, horizontal_columns=('lg',3,10)) }}
                                 <br>
@@ -76,4 +117,8 @@
                 </div>
         </div>
 
+{% endblock %}
+
+{% block scripts %}
+        <script src="../static/app.js" ></script>
 {% endblock %}

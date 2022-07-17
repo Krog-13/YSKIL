@@ -21,7 +21,9 @@ border-width: 5px
 }
 
 .main ins {
-border: thick double #23435F;
+/*border: thick double #23435F;*/
+border:  1px solid #121212;
+border-radius: 3px;
 width: 70px;
 height: 70px;
 left: 2px;
@@ -42,37 +44,112 @@ z-index: 5;
 }
 
 .main a:hover {
-background: #fff200;
-opacity: 0.4
+/*background: #fff200;
+opacity: 0.4;*/
+border-color: yellow;
+box-shadow: 0 1px 3px rgb(0, 0, 0, .12), 0 1px 2px rgb(0, 0, 0, .24);
 }
 .main ins:active {
-background-position: -64px 0px
+
 }
 
+.close {
+  width: 50px;
+  height: 50px;
+  background: url("icons/close.png");
+}
+.closeimg {
+background: url("icons/close.png");
+border:  0px solid #121212;
+width: 24px;
+height: 24px;
+left: 2px;
+top: 4px;
+display: block;
+position: relative;
+left: 250px;
+z-index: 4;
 
+background-position: right;
+background-repeat: no-repeat} 
+}
 .ibg {
-background: url("icons/both.png");
-background-position: -64px 0px
+background: url("icons/code.png");
+filter: grayscale(100%);
+background-position: center;
 }
+
+.ibg-active {
+background: url("icons/code.png");
+filter: grayscale(%);
+background-position: center;
+}
+
+.ibg.hovered {
+  border-color: #ffd100;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, .12), 0 1px 2px rgb(0, 0, 0, .24);
+}
+
 
 .yt {
-background: url("icons/YT.png");
-background-position: 0px 0px
+background: url("icons/DB.png");
+filter: grayscale(100%);
+}
+
+.yt-active {
+background: url("icons/DB.png");
+filter: grayscale(0%);
+background-position: center;
 }
 
 .tw {
-background: url("icons/TW.png");
-background-position: 0px 0px
+background: url("icons/Linux.png");
+filter: grayscale(100%);
+background-position: center;
+}
+
+.tw-active {
+background: url("icons/Linux.png");
+filter: grayscale(0%);
+background-position: center;
 }
 
 .fb {
-background: url("icons/FB.png");
-background-position: 0px 0px
+background: url("icons/cloud.png");
+background-position: center;
+filter: grayscale(100%);
+}
+
+.fb-active {
+background: url("icons/cloud.png");
+background-position: center;
+filter: grayscale(0%);
+}
+
+.fb-passive {
+background: url("icons/cloud.png");
+background-position: center;
+opacity: 0.2;
+filter: grayscale(100%);
 }
 
 .ig {
-background: url("icons/IG.png");
-background-position: 0px 0px
+background: url("icons/Docker.png");
+background-position: center;
+filter: grayscale(100%);
+}
+
+.ig-active {
+background: url("icons/Docker.png");
+background-position: center;
+filter: grayscale(0%);
+}
+
+.ig-passive {
+background: url("icons/Docker.png");
+background-position: center;
+opacity: 0.2;
+filter: grayscale(100%);
 }
 
 

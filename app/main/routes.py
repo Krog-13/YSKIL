@@ -60,15 +60,19 @@ def edit_profile():
 @login_required
 def branch(username):
     form = TalentForm()
-    filename = None
+    filename, is_type_exists = None, []
     user = User.query.filter_by(username=username).first_or_404()
     certificates = user.branches.order_by(Branches.timestamp.desc())
+    for i in certificates:
+        is_type_exists.append(i.field)
     if form.validate_on_submit():
         f = form.doc.data
+        # is_type_exists = Branches.query.filter_by(user_id=user.id, field=form.field.data)
         if f and allowed_file(f.filename):
             filename = secure_filename(f.filename)
             f.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
             post = Branches(certificate=filename,
+                            field=form.field.data,
                             title=form.title.data,
                             timestamp=form.datetime.data,
                             organization=form.organisation.data,
@@ -76,9 +80,9 @@ def branch(username):
             db.session.add(post)
             db.session.commit()
             flash('Your skill has been added')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.branch', username=username))
         flash(f'Invalid extension - {f.filename}')
-    return render_template('branch.html', form=form, posts=certificates)
+    return render_template('branch.html', form=form, posts=certificates, type=is_type_exists)
 
 
 @bp.route('/uploads/<name>')

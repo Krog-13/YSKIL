@@ -141,6 +141,7 @@ class Branches(UserMixin, db.Model):
     certificate = db.Column(db.String(120))
     title = db.Column(db.String(120))
     organization = db.Column(db.String(80), default='Myself')
+    field = db.Column(db.String(80))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
