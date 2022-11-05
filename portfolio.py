@@ -1,7 +1,6 @@
 from app import create_app, db
 from app.models import User, Achievements, Role
-from flask import url_for
-from flask_security import Security, SQLAlchemyUserDatastore
+
 
 app = create_app()
 from app.major import admin
