@@ -18,7 +18,12 @@ class Config(object):
     SECURITY_URL_PREFIX = "/auth"
     SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
     SECURITY_PASSWORD_SALT = "ATGUOHAELKiubahiughaerGOJAEGj"
-
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    ADMINS = ['virtualspook@gmail.com'] #swwunyunvaejdyjg
     # Flask-Security URLs, overridden because they don't put a / at the end
     # SECURITY_LOGIN_URL = "/login"
     # SECURITY_LOGOUT_URL = "/logout/"
