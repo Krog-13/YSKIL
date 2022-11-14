@@ -25,3 +25,4 @@ class TalentForm(FlaskForm):
     organisation = StringField('Organization')
     field = SelectField('Type', choices=type, default='Main')
     submit = SubmitField('Accept')
+

@@ -3,8 +3,9 @@ from app.auth import bp
 from flask import request, redirect, url_for, flash, render_template, send_from_directory
 # from flask_login import logout_user, current_user, login_required
 from werkzeug.utils import secure_filename
-from app.auth.forms import LoginForm, RegisterForm
+from app.auth.forms import LoginForm, RegisterForm, ResetPasswordForm
 from app.models import Achievements, User
+from .email import send_password_reset_email
 from flask_security import login_user, current_user, logout_user, login_required
 
 
@@ -48,4 +49,15 @@ def logout():
     logout_user()
     return redirect(url_for('main.index'))
 
-
+@bp.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash("Check your e-mail for the instructions to reset your password")
+        return redirect(url_for('auth.login'))
+    return render_template('auth/reset_password_request.html', title='Reset password', form=form)

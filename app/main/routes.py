@@ -85,6 +85,7 @@ def branch(username):
     return render_template('branch.html', form=form, posts=certificates, type=is_type_exists)
 
 
+
 @bp.route('/uploads/<name>')
 def download_file(name):
     return send_from_directory(current_app.config['UPLOAD_FOLDER'], name)
