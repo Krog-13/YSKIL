@@ -1,5 +1,5 @@
 FROM python:3.10
-RUN adduser yskill
+RUN adduser -D yskill
 WORKDIR /home/yskill
 
 COPY requirements.txt requirements.txt
